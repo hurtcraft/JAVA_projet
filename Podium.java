@@ -9,6 +9,9 @@ class Animaux{
     public String get_nom(){
         return this.nom;
     }
+    public void set_nom(String nom ){
+        this.nom=nom;
+    }
 }
 
 public class Podium {
@@ -29,7 +32,9 @@ public class Podium {
         this();
         this.couleur=couleur; 
     }
-    
+    public void clear(){
+        this.nb_animaux=0;
+    }
     public void push(Animaux a){
         assert this.est_pleine();
         this.animal_stack[this.nb_animaux]=a;
