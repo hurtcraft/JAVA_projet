@@ -46,6 +46,21 @@ public class Liste_Joueurs{
         this.liste_joueurs.add(J);
         return true;
     }
+    public Joueur get_joueur_by_name(String nom_joueur){
+        assert joueur_exist(nom_joueur);
+
+        Joueur j_tmp=new Joueur(nom_joueur);
+        
+        for (int i = 0; i < this.liste_joueurs.size(); i++){
+            j_tmp=this.liste_joueurs.get(i);
+            if(j_tmp.get_nom().equals(nom_joueur)){
+                break;
+            }
+        }
+        return j_tmp;
+
+
+    }
     public boolean joueur_exist(String nom_joueur){
         Joueur j_tmp;
         for (int i = 0; i < this.liste_joueurs.size(); i++){
@@ -55,6 +70,9 @@ public class Liste_Joueurs{
             }
         }
         return false;
+    }
+    public int size(){
+        return this.liste_joueurs.size();
     }
     public String toString() {
         // TODO Auto-generated method stub

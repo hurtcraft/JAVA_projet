@@ -84,7 +84,31 @@ public class Podium {
         Animaux animal_tmp=this.pop();
         this.push(P.pop());
         P.push(animal_tmp);
+    }
+    public void permut(Podium P){
+        assert (!P.est_vide() && !this.est_vide());
+        Podium p_tmp1=new Podium();
+        Podium p_tmp2=new Podium();
+      
 
+        for (int i = 0; i < Podium.MAX_ANIMAUX; i++) {
+            if (!P.est_vide()) {
+                p_tmp1.push(P.pop());
+            }
+            if(!this.est_vide()){
+                p_tmp2.push(this.pop());
+            }
+        }
+        for (int i = 0; i < Podium.MAX_ANIMAUX; i++) {
+            if (!p_tmp1.est_vide()) {
+                this.push(p_tmp1.pop());
+            }
+            if(!p_tmp2.est_vide()){
+                P.push(p_tmp2.pop());
+
+            }
+            
+        }
     }
     public Animaux get_Animaux(int index){
         assert index<=this.nb_animaux && index>=0;
@@ -95,6 +119,9 @@ public class Podium {
     }
     public String get_couleur(){
         return this.couleur;
+    }
+    public void set_couleur(String couleur){
+        this.couleur=couleur;
     }
     public Podium clone(){
         Podium p_tmp=new Podium(this.couleur);
