@@ -1,13 +1,12 @@
-import java.util.ArrayList;
 
 class Joueur {
-    private String nom; //
+    private String nom; 
     private int score;
     private boolean token;
     public Joueur(String nom){
         this.nom=nom;
         this.score=0;
-        this.token=true;
+        this.token=true;// pour que un joueur puisse joué il faut que son token soit a true
     }
     public void increase_score(){
         System.out.println("le joueur "+this.nom+" a gagne cette manche \\(^_^)/");

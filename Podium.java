@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.lang.StringBuilder;
 
 class Animaux{
@@ -22,7 +21,7 @@ public class Podium {
 
     public Podium(){
         this.couleur=" ";
-        this.animal_stack=new Animaux[this.MAX_ANIMAUX];
+        this.animal_stack=new Animaux[Podium.MAX_ANIMAUX];
         this.nb_animaux=0;
     }
     public int get_max_animaux(){
