@@ -36,13 +36,24 @@ public class Podium {
         this.nb_animaux=0;
     }
     public void push(Animaux a){
-        assert this.est_pleine();
+        assert !this.est_pleine();
         this.animal_stack[this.nb_animaux]=a;
         this.nb_animaux++;
     }
-
+    public boolean is_equal(Podium p){
+        if(p.get_nb_animaux()!=this.get_nb_animaux()){
+            return false;
+        }
+        
+        for (int i = 0; i < p.get_nb_animaux(); i++) {
+            if(!this.animal_stack[i].get_nom().equals(p.animal_stack[i].get_nom())){
+                return false;
+            }
+        }
+        return true;
+    }
     public Animaux pop(){
-        assert this.est_vide();
+        assert !this.est_vide() : "empty stack ";
         Animaux a_tmp;
         a_tmp=this.animal_stack[this.nb_animaux-1];
         this.nb_animaux--;
@@ -53,11 +64,11 @@ public class Podium {
         return this.nb_animaux==0;
     }
     public boolean est_pleine(){
-        return this.nb_animaux>this.MAX_ANIMAUX;
+        return this.nb_animaux>Podium.MAX_ANIMAUX;
     }
     public void last_to_top(){
         // INSTRUCTION NI MA
-        assert this.est_vide();
+        assert !this.est_vide():"la pile " +this.couleur+" est vide";
 
         Podium podium_tmp=new Podium();
         Animaux animaux_tmp;
@@ -73,8 +84,8 @@ public class Podium {
     }
     public void jump_to(Podium P){
         // INSTRUCTION KI LO
-        assert this.est_vide();
-        assert P.est_pleine();
+        assert !this.est_vide():"la pile source est vide";
+        assert !P.est_pleine():"la pile cible est plaine";
 
         P.push(this.pop());
     }
@@ -86,7 +97,7 @@ public class Podium {
         P.push(animal_tmp);
     }
     public void permut(Podium P){
-        assert (!P.est_vide() && !this.est_vide());
+        assert (!P.est_vide() || !this.est_vide());
         Podium p_tmp1=new Podium();
         Podium p_tmp2=new Podium();
       

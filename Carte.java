@@ -6,6 +6,17 @@ public class Carte {
         this.p1=p1;
         this.p2=p2;
     }
+    public boolean is_equal(Carte c2){
+        return this.p1.is_equal(c2.p1) && this.p2.is_equal(c2.p2);
+    }
+    public Podium get_podium1(){
+        return p1.clone();// on renvoie un clone de p1 comme sa la carte n'est pas modifié si on modifie p1
+    }
+    public Podium get_podium2(){
+        return p2.clone();// on renvoie un clone de p2 comme sa la carte n'est pas modifié si on modifie p2
+    }
+    
+
     public String toString(){
         StringBuilder sb = new StringBuilder();
         String largeur= "-------------------------------------\n";
