@@ -213,8 +213,8 @@ public class App {
      * @param map_instruction hash map contenant les instructions
      * @return  Retourne la sequence d'instruction(<nom_joueur> <sequence>) que le joueur à saisie si elle est syntaxiquement correct , return "NO" sinon
      */
-    public static String get_solution_joueur(Map<String, Joueur> map_joueurs,
-            Map<String, Instruction> map_instruction) {
+    public static String get_solution_joueur(Map<String, Joueur> map_joueurs,Map<String, Instruction> map_instruction) {
+        
         Scanner sc = new Scanner(System.in);
         String joueur_solution = sc.nextLine();
         String nom_joueur;
