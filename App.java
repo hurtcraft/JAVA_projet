@@ -7,14 +7,14 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String argv[]) {
-        if (argv.length<=3){
+        if (argv.length<2){
             System.out.println("Veuillez saisir des joueurs App {pseudo}");
             return;
         }
         Map<String, Joueur> map_joueurs = new HashMap<>();
         joueur_to_map(map_joueurs, argv);
-        Podium p_rouge = new Podium("Rouge");
-        Podium p_bleu = new Podium("Bleu");
+        Podium p_rouge = new Podium("ROUGE");
+        Podium p_bleu = new Podium("BLEU");
         final int MAX_ANIMAUX = p_bleu.get_max_animaux();
         Animaux liste_Animaux[] = generate_animaux(MAX_ANIMAUX);
         ArrayList<Carte> liste_cartes = generate_carte(liste_Animaux, p_bleu, p_rouge);
@@ -41,19 +41,20 @@ public class App {
             }
             if (!analyse_solution(map_instructions, map_joueurs, joueur_solution, carte_init, carte_destination)) {
                 joueur_en_jeu.remove(current_player);
-            } else {
+            } 
+            else {
                 current_player.increase_score();
                 set_all_player_token_true(map_joueurs);
                 joueur_en_jeu = new ArrayList<>(map_joueurs.values());
                 carte_init = carte_destination;
                 carte_destination = get_random_carte(liste_cartes);
+                continue;
             }
 
             if (joueur_en_jeu.size() == 1) {
                 joueur_en_jeu.get(0).increase_score();
                 set_all_player_token_true(map_joueurs);
                 joueur_en_jeu = new ArrayList<>(map_joueurs.values());
-                carte_init = carte_destination;
                 carte_destination = get_random_carte(liste_cartes);
             }
         }
@@ -69,9 +70,9 @@ public class App {
         Animaux liste_Animaux[] = new Animaux[NB_MAX_ANIMAUX];
 
         String noms_animaux[] = new String[liste_Animaux.length];
-        noms_animaux[0] = "lion";
-        noms_animaux[1] = "ours";
-        noms_animaux[2] = "elephant";
+        noms_animaux[0] = "LION";
+        noms_animaux[1] = "OURS";
+        noms_animaux[2] = "ELEPHANT";
         normalise_nom_animaux(noms_animaux);
 
         Animaux a_tmp;
@@ -276,8 +277,6 @@ public class App {
         String nom_joueur = joueur_solution.substring(0, joueur_solution.lastIndexOf(" "));
         String solution = joueur_solution.substring(joueur_solution.lastIndexOf(" ") + 1);
 
-        System.out.println(new Carte(p_bleu_init, p_rouge_init));
-
         for (int i = 0; i < solution.length(); i += 2) {
             instruction = solution.substring(i, i + 2);
             map_instruction.get(instruction).run(p_bleu_init, p_rouge_init);
@@ -451,4 +450,5 @@ public class App {
         System.out.println(sb);
 
     }
+
 }
