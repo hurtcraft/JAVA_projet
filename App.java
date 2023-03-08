@@ -4,8 +4,13 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
+
 public class App {
     public static void main(String argv[]) {
+        if (argv.length<=3){
+            System.out.println("Veuillez saisir des joueurs App {pseudo}");
+            return;
+        }
         Map<String, Joueur> map_joueurs = new HashMap<>();
         joueur_to_map(map_joueurs, argv);
         Podium p_rouge = new Podium("Rouge");
