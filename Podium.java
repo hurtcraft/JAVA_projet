@@ -1,6 +1,7 @@
 import java.lang.StringBuilder;
 
 class Animaux{
+    //la class doit s'appeller "Animal" mais jme suis rendu compte trop tard de ma faute de grammaire :/ 
     private String nom;
     public Animaux(String nom){
         this.nom=nom;

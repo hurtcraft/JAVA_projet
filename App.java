@@ -148,6 +148,7 @@ public class App {
      */
     public static Map<String, Instruction> set_map_instructions(Podium p_bleu, Podium p_rouge) {
         Map<String, Instruction> set_instructions = new HashMap<>();
+        
         set_instructions.put("KI", new Instruction() {
             public void run(Podium p_bleu, Podium p_rouge) {
                 if (!p_bleu.est_vide() && !p_rouge.est_pleine()) {
