@@ -43,12 +43,10 @@ public class App {
                 joueur_en_jeu.remove(current_player);
             } 
             else {
-                current_player.increase_score();
                 set_all_player_token_true(map_joueurs);
                 joueur_en_jeu = new ArrayList<>(map_joueurs.values());
                 carte_init = carte_destination;
                 carte_destination = get_random_carte(liste_cartes);
-                continue;
             }
 
             if (joueur_en_jeu.size() == 1) {
